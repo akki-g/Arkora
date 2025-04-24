@@ -1,6 +1,6 @@
 "use client";
 
-import { CSSProperties } from 'react';
+import { useEffect, CSSProperties } from 'react';
 import { Box, Paper, Typography } from '@mui/material';
 import useEditorStore from '@/store/editorStore';
 import DropZone from './DropZone';
@@ -143,6 +143,11 @@ const Canvas = () => {
             />
           </Box>
         );
+
+        useEffect(() => {
+            // Debug log the component tree to check structure
+            console.log('Component tree:', components);
+          }, [components]);
         
       default:
         return (

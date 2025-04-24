@@ -8,6 +8,7 @@ import Canvas from './Canvas';
 import PropertyEditor from './PropertyEditor';
 import PreviewPanel from './PreviewPanel';
 import useEditorStore from '@/store/editorStore';
+import BrowserFrame from './BrowserFrame';
 
 const drawerWidth = 280;
 
@@ -79,11 +80,13 @@ const EditorLayout = () => {
         <Toolbar /> {/* This creates space for the AppBar */}
         
         {mode === 'edit' ? (
-          <Canvas />
+          <BrowserFrame>
+            <Canvas />
+          </BrowserFrame>
         ) : (
           <PreviewPanel components={components} />
         )}
-      </Box>
+    </Box>
       
       {/* Right Sidebar - Property Editor */}
       {mode === 'edit' && (

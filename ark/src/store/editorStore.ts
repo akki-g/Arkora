@@ -13,20 +13,25 @@ const useEditorStore = create<EditorState>((set, get) => ({
   // Add a component to the canvas
   addComponent: (type, parentId = null) => {
     const newComponent = createComponent(type);
+    console.log('Creating new component:', newComponent);
+    console.log('Parent ID:', parentId);
     
     set((state) => {
       // If no parent, add to root level
       if (!parentId) {
+        console.log('Adding to root level');
         return { components: [...state.components, newComponent] };
       }
       
       // Otherwise, add to children of specified parent
+      console.log('Adding to parent:', parentId);
       const updatedComponents = addComponentToParent(
         state.components, 
         parentId, 
         newComponent
       );
       
+      console.log('Updated components tree:', updatedComponents);
       return { components: updatedComponents };
     });
     
